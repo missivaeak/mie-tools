@@ -20,6 +20,13 @@ const start = async () => {
     }
   });
 
+  server.ext('onPreResponse', (request, h) => {
+    const statusCode = request.response.statusCode ?? request.response.output?.statusCode ?? -1;
+    console.log(`${request.method} ${statusCode} ${request.path}`)
+
+    return h.continue;
+  })
+
   await server.register(inert);
 
   server.route({
