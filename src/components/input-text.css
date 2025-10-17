@@ -1,0 +1,6 @@
+.input-text {
+  flex-grow: 1;
+  border-radius: 8px;
+  border: none;
+  padding: 5px;
+}
