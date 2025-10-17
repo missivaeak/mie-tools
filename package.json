@@ -7,9 +7,12 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node --watch server.js"
   },
   "dependencies": {
+    "@hapi/hapi": "^21.4.3",
+    "@hapi/inert": "^7.1.0",
     "@uiw/react-codemirror": "^4.25.2",
     "jwt-simple": "^0.5.6",
     "react": "^19.1.1",
