@@ -1,7 +1,6 @@
 import { useState } from "react";
 import InputTextarea from "../components/InputTextarea";
 import { prettyPrint } from "@base2/pretty-print-object";
-import objectStringToObject from 'object-string-to-object';
 
 type JsonMode = 'parse' | 'stringify';
 
