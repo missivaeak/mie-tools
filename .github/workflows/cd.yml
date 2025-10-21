@@ -16,7 +16,7 @@ jobs:
       with:
         host: ${{ secrets.SSH_IP }}
         username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
+        key: ${{ secrets.SSH_PASSWORD }}
         script: |
           cd mie-tools
           git fetch origin
