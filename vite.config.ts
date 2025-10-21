@@ -14,5 +14,6 @@ export default defineConfig({
   ],
   ssr: {
     noExternal: ['crypto', 'util', 'stream']
-  }
+  },
+  base: './'
 })

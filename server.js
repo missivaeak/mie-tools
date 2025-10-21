@@ -31,7 +31,7 @@ const start = async () => {
 
   server.route({
     method: 'GET',
-    path: '/{param*}',
+    path: '/tools/{param*}',
     handler: {
       directory: {
         path: 'dist',
