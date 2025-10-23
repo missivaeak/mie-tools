@@ -41,7 +41,7 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: solid 2px #c0c0c0;
+  border: solid 2px #eee;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -59,7 +59,7 @@ button.active {
 
 input, select {
   border-radius: 8px;
-  outline: solid 2px #c0c0c0;
+  outline: solid 2px #eee;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
@@ -84,7 +84,7 @@ input:focus, select:focus {
     width: calc(100% - 4px);
     height: calc(100% - 4px);
     position: absolute;
-    border: solid 2px #c0c0c0;
+    border: solid 2px #eee;
     border-radius: 8px;
     pointer-events: none;
     z-index: 1;

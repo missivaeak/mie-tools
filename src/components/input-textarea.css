@@ -5,7 +5,7 @@
   position: relative;
 
   &.disabled::before {
-    border: solid 2px #c0c0c0;
+    border: solid 2px #eee;
     background-color: #0001;
   }
 
