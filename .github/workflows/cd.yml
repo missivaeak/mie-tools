@@ -22,5 +22,6 @@ jobs:
           git fetch origin
           git clean -df
           git pull
+          npm ci
           npm run build
           pm2 restart mie-tools
