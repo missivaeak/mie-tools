@@ -40,7 +40,7 @@ export default function JsonTool() {
       keyCallbackMap[key](value)
     });
 
-    localStorage.setItem('base64State', JSON.stringify(storedState));
+    localStorage.setItem('jsonState', JSON.stringify(storedState));
   }
 
   const jsObjectToJson = function (jsObject: string) {
