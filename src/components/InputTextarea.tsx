@@ -33,7 +33,7 @@ export default function CodeTextarea({ value, onChange, disabled, className }: C
       readOnly={disabled}
       editable={!disabled}
       extensions={[EditorView.lineWrapping]}
-      value={value}
+      value={typeof value === 'string' ? value : JSON.stringify(value)}
       onChange={onChange}
       height={'190px'}
       basicSetup={{
