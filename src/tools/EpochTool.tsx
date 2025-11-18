@@ -207,14 +207,17 @@ export default function EpochTool() {
   };
 
   return <>
-    <h2>Epoch timestamp</h2>
+    <section>
+      <h2>Epoch Time and date time conversion</h2>
+    </section>
+    <h3>Timestamp</h3>
     <section>
       <InputText
         value={timestamp}
         onChange={updateTimestamp}
       />
     </section>
-    <h2>Date-time picker</h2>
+    <h3>Date-time picker</h3>
     <section>
       <span>Year</span>
       <InputText
@@ -241,14 +244,14 @@ export default function EpochTool() {
         onChange={(time) => updatePicker({ time })}
       />
     </section>
-    <h2>Date-time string</h2>
+    <h3>Date-time string</h3>
     <section>
       <InputText
         value={dateTimeString}
         onChange={updateDateTimeString}
       />
     </section>
-    <h2>Settings</h2>
+    <h3>Settings</h3>
     <section>
       <span>Precision</span>
       <InputSelect options={precisions} value={precision} onChange={updatePrecision} />

@@ -47,6 +47,7 @@ function App() {
       <nav>
         <Toolbar tools={tools} selected={toolKey} onSelection={onSelection} />
       </nav>
+      {/* <hr className="nav-article-bar" /> */}
       <article>
         {tool?.component}
       </article>

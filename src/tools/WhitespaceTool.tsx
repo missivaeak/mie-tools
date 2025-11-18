@@ -28,7 +28,7 @@ export default function WhitespaceTool() {
   if (tabs) output = output.replace(/\t/g, '');
   if (newline) output = output.replace(/[\r\n\f\v]/g, '');
 
-  const updateState = function (update: Partial<UriState>) {
+  const updateState = function(update: Partial<UriState>) {
     const keyCallbackMap = {
       input: setInput,
       spaces: setSpaces,
@@ -46,27 +46,30 @@ export default function WhitespaceTool() {
     localStorage.setItem('whitespaceState', JSON.stringify(storedState));
   }
 
-  const updateInput = function (input: string) {
+  const updateInput = function(input: string) {
     updateState({ input });
   }
 
-  const toggleSpaces = function () {
+  const toggleSpaces = function() {
     updateState({ spaces: !spaces })
   }
 
-  const toggleTabs = function () {
+  const toggleTabs = function() {
     updateState({ tabs: !tabs })
   }
 
-  const toggleNewline = function () {
+  const toggleNewline = function() {
     updateState({ newline: !newline })
   }
 
   return <>
     <section>
-      <InputToggle value={spaces} onToggle={toggleSpaces} label="Spaces" />
-      <InputToggle value={tabs} onToggle={toggleTabs} label="Tabs" />
-      <InputToggle value={newline} onToggle={toggleNewline} label="Newlines" />
+      <h2>Whitespace removal</h2>
+    </section>
+    <section>
+      <InputToggle className="smaller" value={spaces} onToggle={toggleSpaces} label="Spaces" />
+      <InputToggle className="smaller" value={tabs} onToggle={toggleTabs} label="Tabs" />
+      <InputToggle className="smaller" value={newline} onToggle={toggleNewline} label="Newlines" />
     </section >
     <h3>Text</h3>
     <InputTextarea

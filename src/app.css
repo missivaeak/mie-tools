@@ -9,6 +9,11 @@
   margin: 0 auto;
 }
 
+body {
+  background: #833AB4;
+  background: linear-gradient(340deg, oklch(0.95 0.02 213) 0%, oklch(1 0 0) 50%, oklch(0.95 0.02 184) 100%);
+}
+
 main {
   height: 100dvh;
   display: flex;
@@ -40,6 +45,11 @@ article {
   flex-flow: row wrap;
   gap: 1rem;
   width: 100%;
+
+  background: #ffff;
+  border-radius: 1rem;
+  padding: 1rem;
+  outline: solid 1px oklch(0.9 0.04 213);
 }
 
 section {
@@ -55,6 +65,10 @@ footer {
   display: flex;
   margin-top: auto;
   justify-content: center;
+}
+
+.nav-article-bar {
+  width: 100%;
 }
 
 

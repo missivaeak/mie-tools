@@ -24,7 +24,7 @@ export default function UriTool() {
   const [encoding, setEncoding] = useState(storedState.encoding);
   const [mode, setMode] = useState(storedState.mode);
 
-  const updateState = function (update: Partial<UriState>) {
+  const updateState = function(update: Partial<UriState>) {
     const keyCallbackMap = {
       readable: setReadable,
       uriEncoded: setUriEncoded,
@@ -42,7 +42,7 @@ export default function UriTool() {
     localStorage.setItem('uriState', JSON.stringify(storedState));
   }
 
-  const updateReadable = function (readable: string) {
+  const updateReadable = function(readable: string) {
     if (encoding === 'component') {
       const uriEncoded = encodeURIComponent(readable);
       updateState({ uriEncoded, readable });
@@ -54,7 +54,7 @@ export default function UriTool() {
     }
   }
 
-  const updateUriEncoded = function (uriEncoded: string) {
+  const updateUriEncoded = function(uriEncoded: string) {
     if (mode === 'decode') {
       if (encoding === 'component') {
         const readable = decodeURIComponent(uriEncoded);
@@ -80,7 +80,7 @@ export default function UriTool() {
     }
   }
 
-  const updateEncoding = function (encoding: UriEncoding) {
+  const updateEncoding = function(encoding: UriEncoding) {
     if (mode === 'decode') {
       if (encoding === 'component') {
         const readable = decodeURIComponent(uriEncoded);
@@ -106,17 +106,20 @@ export default function UriTool() {
     }
   }
 
-  const updateMode = function (mode: UriToolMode) {
+  const updateMode = function(mode: UriToolMode) {
     updateState({ mode })
   }
 
   return <>
     <section>
-      <button className={encoding === 'component' ? 'active' : ''} onClick={() => updateEncoding('component')} >Component</button>
-      <button className={encoding === 'regular' ? 'active' : ''} onClick={() => updateEncoding('regular')} >Regular</button>
+      <h2>URI encoding & decoding</h2>
+    </section>
+    <section>
+      <button className={`smaller ${encoding === 'component' ? 'active' : ''}`} onClick={() => updateEncoding('component')} >Component</button>
+      <button className={`smaller ${encoding === 'regular' ? 'active' : ''}`} onClick={() => updateEncoding('regular')} >Regular</button>
       |
-      <button className={mode === 'encode' ? 'active' : ''} onClick={() => updateMode('encode')} >Encode</button>
-      <button className={mode === 'decode' ? 'active' : ''} onClick={() => updateMode('decode')} >Decode</button>
+      <button className={`smaller ${mode === 'encode' ? 'active' : ''}`} onClick={() => updateMode('encode')} >Encode</button>
+      <button className={`smaller ${mode === 'decode' ? 'active' : ''}`} onClick={() => updateMode('decode')} >Decode</button>
     </section >
     <h3>Text</h3>
     <InputTextarea
