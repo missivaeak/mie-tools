@@ -25,7 +25,7 @@ export default function JsonTool() {
   const [mode, setMode] = useState(storedState.mode);
   const [valid, setValid] = useState(storedState.valid);
 
-  const updateState = function (update: Partial<JsonToolState>) {
+  const updateState = function(update: Partial<JsonToolState>) {
     const keyCallbackMap = {
       json: setJson,
       jsObject: setJsObject,
@@ -43,15 +43,15 @@ export default function JsonTool() {
     localStorage.setItem('jsonState', JSON.stringify(storedState));
   }
 
-  const jsObjectToJson = function (jsObject: string) {
+  const jsObjectToJson = function(jsObject: string) {
     return JSON.stringify(eval(`(${jsObject})`));
   }
 
-  const jsonToJsObject = function (json: string) {
+  const jsonToJsObject = function(json: string) {
     return prettyPrint(JSON.parse(json));
   }
 
-  const updateJson = function (json: string) {
+  const updateJson = function(json: string) {
     try {
       const jsObject = jsonToJsObject(json);
       updateState({ json, jsObject, valid: true });
@@ -61,7 +61,7 @@ export default function JsonTool() {
     }
   }
 
-  const updateJsObject = function (jsObject: string) {
+  const updateJsObject = function(jsObject: string) {
     try {
       const json = jsObjectToJson(jsObject);
       updateState({ json, jsObject, valid: true });
@@ -71,11 +71,14 @@ export default function JsonTool() {
     }
   }
 
-  const updateMode = function (mode: JsonMode) {
+  const updateMode = function(mode: JsonMode) {
     updateState({ mode });
   }
 
   return <>
+    <section>
+      <h2>JSON/Javascript object conversion</h2>
+    </section>
     <section>
       <button className={mode === 'parse' ? 'active' : ''} onClick={() => updateMode('parse')} >Parse</button>
       <button className={mode === 'stringify' ? 'active' : ''} onClick={() => updateMode('stringify')} >Stringify</button>

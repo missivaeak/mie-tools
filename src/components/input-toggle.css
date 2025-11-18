@@ -14,6 +14,10 @@
   background-color: #f9f9f9;
   cursor: pointer;
   transition: border 0.25s;
+  
+  &.smaller {
+    font-size: 0.8em;
+  }
 
   &:hover {
     border: solid 2px cornflowerblue;

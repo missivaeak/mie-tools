@@ -27,7 +27,7 @@ export default function Base64Tool() {
   const [encoding, setEncoding] = useState(storedState.encoding);
   const [mode, setMode] = useState(storedState.mode);
 
-  const updateState = function (update: Partial<Base64State>) {
+  const updateState = function(update: Partial<Base64State>) {
     const keyCallbackMap = {
       readable: setReadable,
       base64: setBase64,
@@ -45,7 +45,7 @@ export default function Base64Tool() {
     localStorage.setItem('base64State', JSON.stringify(storedState));
   }
 
-  const readableToBase64 = function (readable: string) {
+  const readableToBase64 = function(readable: string) {
     const encoder = new TextEncoder();
     const bytes = encoder.encode(readable);
     const text = bytes.reduce((acc, byte) => {
@@ -57,7 +57,7 @@ export default function Base64Tool() {
     return base64;
   }
 
-  const base64ToReadable = function (base64: string) {
+  const base64ToReadable = function(base64: string) {
     const text = atob(base64);
     const length = text.length;
     const bytes = new Uint8Array(length);
@@ -70,12 +70,12 @@ export default function Base64Tool() {
     return readable;
   }
 
-  const updateReadable = function (readable: string) {
+  const updateReadable = function(readable: string) {
     const base64 = readableToBase64(readable);
     updateState({ readable, base64 });
   }
 
-  const updateBase64 = function (base64: string) {
+  const updateBase64 = function(base64: string) {
     const readable = base64ToReadable(base64);
     updateState({ base64, readable });
   }
@@ -92,14 +92,17 @@ export default function Base64Tool() {
   //   }
   // }
 
-  const updateMode = function (mode: Base64Mode) {
+  const updateMode = function(mode: Base64Mode) {
     updateState({ mode });
   }
 
   return <>
     <section>
-      <button className={mode === 'encode' ? 'active' : ''} onClick={() => updateMode('encode')} >Encode</button>
-      <button className={mode === 'decode' ? 'active' : ''} onClick={() => updateMode('decode')} >Decode</button>
+      <h2>Base64 decoding & enconding</h2>
+    </section>
+    <section>
+      <button className={`smaller ${mode === 'encode' ? 'active' : ''}`} onClick={() => updateMode('encode')} >Encode</button>
+      <button className={`smaller ${mode === 'decode' ? 'active' : ''}`} onClick={() => updateMode('decode')} >Decode</button>
     </section >
     <h3>Text</h3>
     <InputTextarea

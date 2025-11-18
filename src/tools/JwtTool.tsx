@@ -34,7 +34,7 @@ export default function JwtTool() {
   const [algorithm, setAlgorithm] = useState(storedState.algorithm);
   const [mode, setMode] = useState(storedState.mode);
 
-  const updateState = function (update: Partial<JwtState>) {
+  const updateState = function(update: Partial<JwtState>) {
     const keyCallbackMap = {
       payload: setPayload,
       token: setToken,
@@ -54,7 +54,7 @@ export default function JwtTool() {
     localStorage.setItem('jwtState', JSON.stringify(storedState));
   }
 
-  const updatePayload = function (payload: string) {
+  const updatePayload = function(payload: string) {
     const token = jwt.encode(payload, secret, algorithm);
     updateState({
       payload,
@@ -63,7 +63,7 @@ export default function JwtTool() {
     });
   }
 
-  const updateToken = function (token: string) {
+  const updateToken = function(token: string) {
     try {
       const payload = jwt.decode(token, secret, false, algorithm);
       updateState({
@@ -94,7 +94,7 @@ export default function JwtTool() {
     }
   }
 
-  const updateSecret = function (secret: string) {
+  const updateSecret = function(secret: string) {
     if (mode === 'generate') {
       const token = jwt.encode(payload, secret, algorithm);
       updateState({
@@ -124,19 +124,22 @@ export default function JwtTool() {
     }
   }
 
-  const updateAlgorithm = function (algorithm: Algorithm) {
+  const updateAlgorithm = function(algorithm: Algorithm) {
     const token = jwt.encode(payload, secret, algorithm);
     updateState({ algorithm, token });
   }
 
-  const updateMode = function (mode: JwtToolMode) {
+  const updateMode = function(mode: JwtToolMode) {
     updateState({ mode });
   }
 
   return <>
     <section>
-      <button className={mode === 'generate' ? 'active' : ''} onClick={() => updateMode('generate')} >Generate token</button>
-      <button className={mode === 'inspect' ? 'active' : ''} onClick={() => updateMode('inspect')} >Inspect token</button>
+      <h2>JWT inspection & generation</h2>
+    </section>
+    <section>
+      <button className={`smaller ${mode === 'generate' ? 'active' : ''}`} onClick={() => updateMode('generate')} >Generate token</button>
+      <button className={`smaller ${mode === 'inspect' ? 'active' : ''}`} onClick={() => updateMode('inspect')} >Inspect token</button>
     </section >
     <h3>Token</h3>
     <InputTextarea value={token} onChange={updateToken} disabled={mode !== 'inspect'} className={mode === 'inspect' ? valid ? 'valid' : 'invalid' : ''} />
