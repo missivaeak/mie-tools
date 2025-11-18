@@ -6,13 +6,14 @@ import Base64Tool from './tools/Base64Tool';
 import UriTool from './tools/UriTool';
 import WhitespaceTool from './tools/WhitespaceTool';
 import JsonTool from './tools/JsonTool';
+import EpochTool from './tools/EpochTool';
 
 export type Tool = {
   name: string,
   component: JSX.Element;
 }
 
-export const toolKeys = ['jwt', 'base64', 'uri', 'whitespace', 'json'] as const;
+export const toolKeys = ['jwt', 'base64', 'uri', 'whitespace', 'json', 'epoch'] as const;
 export type ToolKey = (typeof toolKeys)[number];
 
 export type Tools = {
@@ -24,7 +25,8 @@ const tools: Tools = {
   base64: { name: 'Base64', component: <Base64Tool /> },
   uri: { name: 'URI encoding', component: <UriTool /> },
   whitespace: { name: 'Whitespace removal', component: <WhitespaceTool /> },
-  json: { name: 'JSON', component: <JsonTool /> }
+  json: { name: 'JSON', component: <JsonTool /> },
+  epoch: { name: 'Epoch Time', component: <EpochTool /> }
 }
 
 function App() {
