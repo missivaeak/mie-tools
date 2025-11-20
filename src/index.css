@@ -41,24 +41,27 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: solid 2px #eee;
+  border-style: solid;
+  border-width: 2px;
+  border-color: #eee;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #f9f9f9;
   cursor: pointer;
-  transition: border 0.25s;
+  transition: border-color 0.25s;
 
   &.smaller {
     font-size: 0.8em;
+    border-width: 1px;
   }
 }
 button:hover {
-  border: solid 2px cornflowerblue;
+  border-color: cornflowerblue;
 }
 button.active {
-  border: solid 2px black;
+  border-color: #666;
 }
 
 input, select {
@@ -75,7 +78,7 @@ input:hover, select:hover {
   outline: solid 2px cornflowerblue;
 }
 input:focus, select:focus {
-  outline: solid 2px black;
+  outline: solid 2px #666;
 }
 
 .input-textarea {
@@ -99,7 +102,7 @@ input:focus, select:focus {
   }
 
   &:has(.cm-focused)::before {
-    border: solid 2px black;
+    border: solid 2px #666;
   }
 }
 

@@ -80,8 +80,8 @@ export default function JsonTool() {
       <h2>JSON/Javascript object conversion</h2>
     </section>
     <section>
-      <button className={mode === 'parse' ? 'active' : ''} onClick={() => updateMode('parse')} >Parse</button>
-      <button className={mode === 'stringify' ? 'active' : ''} onClick={() => updateMode('stringify')} >Stringify</button>
+      <button className={`smaller ${mode === 'parse' ? 'active' : ''}`} onClick={() => updateMode('parse')} >Parse</button>
+      <button className={`smaller ${mode === 'stringify' ? 'active' : ''}`} onClick={() => updateMode('stringify')} >Stringify</button>
     </section >
     <h3>JSON</h3>
     <InputTextarea
