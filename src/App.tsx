@@ -7,13 +7,14 @@ import UriTool from './tools/UriTool';
 import WhitespaceTool from './tools/WhitespaceTool';
 import JsonTool from './tools/JsonTool';
 import EpochTool from './tools/EpochTool';
+import BarcodeMakerTool from './tools/BarcodeMakerTool';
 
 export type Tool = {
   name: string,
   component: JSX.Element;
 }
 
-export const toolKeys = ['jwt', 'base64', 'uri', 'whitespace', 'json', 'epoch'] as const;
+export const toolKeys = ['jwt', 'base64', 'uri', 'whitespace', 'json', 'epoch', 'barcodeMaker'] as const;
 export type ToolKey = (typeof toolKeys)[number];
 
 export type Tools = {
@@ -26,7 +27,8 @@ const tools: Tools = {
   uri: { name: 'URI encoding', component: <UriTool /> },
   whitespace: { name: 'Whitespace removal', component: <WhitespaceTool /> },
   json: { name: 'JSON', component: <JsonTool /> },
-  epoch: { name: 'Epoch Time', component: <EpochTool /> }
+  epoch: { name: 'Epoch Time', component: <EpochTool /> },
+  barcodeMaker: { name: 'Barcode maker', component: <BarcodeMakerTool /> }
 }
 
 function App() {
