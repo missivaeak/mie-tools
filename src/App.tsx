@@ -27,7 +27,7 @@ const tools: Tools = {
   uri: { name: 'URI encoding', component: <UriTool /> },
   whitespace: { name: 'Whitespace removal', component: <WhitespaceTool /> },
   json: { name: 'JSON', component: <JsonTool /> },
-  epoch: { name: 'Epoch Time', component: <EpochTool /> },
+  epoch: { name: 'Time conversion', component: <EpochTool /> },
   barcodeMaker: { name: 'Barcode maker', component: <BarcodeMakerTool /> }
 }
 

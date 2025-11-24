@@ -208,7 +208,7 @@ export default function EpochTool() {
 
   return <>
     <section>
-      <h2>Epoch Time and date time conversion</h2>
+      <h2>Time and date time conversion</h2>
     </section>
     <h3>Timestamp</h3>
     <section>
