@@ -14,6 +14,7 @@ type BarcodeToolState = {
   valid: boolean;
   scale: string;
   barcodeText: string;
+  hint: string;
 }
 
 const defaultState = `{
@@ -21,7 +22,8 @@ const defaultState = `{
   "barcodeType": "code128",
   "valid": true,
   "scale": "1.0",
-  "barcodeText": "123456789012"
+  "barcodeText": "123456789012",
+  "hint": ""
 }`
 
 function getBarcodeRatio(barcodeType: string) {
@@ -45,6 +47,7 @@ export default function BarcodeMakerTool() {
   const [valid, setValid] = useState(storedState.valid);
   const [scale, setScale] = useState(storedState.scale);
   const [barcodeText, setBarcodeText] = useState(storedState.barcodeText);
+  const [hint, setHint] = useState(storedState.hint)
   const canvasRef = useRef<HTMLCanvasElement | null>(null)
 
   const updateState = function(update: Partial<BarcodeToolState>) {
@@ -53,7 +56,8 @@ export default function BarcodeMakerTool() {
       barcodeType: setBarcodeType,
       valid: setValid,
       scale: setScale,
-      barcodeText: setBarcodeText
+      barcodeText: setBarcodeText,
+      hint: setHint
     }
 
     Object.entries(update).forEach(([key, value]) => {
@@ -67,11 +71,7 @@ export default function BarcodeMakerTool() {
   }
 
   useEffect(() => {
-    if (!text) {
-      canvasRef.current?.getContext('2d')?.reset();
-    }
-
-    if (text && barcodeType && canvasRef.current) {
+    if (barcodeType && canvasRef.current) {
       try {
         canvasRef.current.getContext("2d")?.fill();
 
@@ -88,16 +88,19 @@ export default function BarcodeMakerTool() {
           width: 120,
           height: 120 * getBarcodeRatio(barcodeType)
         });
-        updateState({ valid: true, barcodeText: text })
+        updateState({ valid: true, barcodeText: text, hint: '' })
       } catch (e) {
         console.warn(e);
-        updateState({ valid: false })
+
+        const hint = e instanceof Error ? e?.message?.split(':')?.[1] ?? '' : '';
+
+        updateState({ valid: false, hint })
       }
     }
   }, [text, barcodeType, scale]);
 
   const updateText = function(text: string) {
-    updateState({ text: String.raw({ raw: text }) });
+    updateState({ text });
   }
 
   const updateBarcodeType = function(barcodeType: string) {
@@ -110,7 +113,7 @@ export default function BarcodeMakerTool() {
 
   return <>
     <section>
-      <h2>Barcode generation</h2>
+      <h2>Barcode maker</h2>
     </section>
     <h3>Text</h3>
     <InputTextarea
@@ -122,10 +125,13 @@ export default function BarcodeMakerTool() {
     <InputSelect options={barcodeTypes} value={barcodeType} onChange={updateBarcodeType} />
     {/* <span>Scaling:</span> */}
     {/* <InputText value={scale} onChange={updateScale} maxSize={4} /> */}
-    <section>
+    <section className={valid || !text ? 'hidden' : ''}>
+      <span>{hint}</span>
+    </section>
+    <section className={valid && text ? '' : 'hidden'}>
       <canvas ref={canvasRef} />
     </section>
-    <section>
+    <section className={valid && text ? '' : 'hidden'}>
       <pre>{barcodeText.replace(/\n/g, '\\n')}</pre>
     </section>
   </>
